@@ -1,14 +1,15 @@
 {
     "name": "Safari Books Online Video Downloader",
     "description": "If you have Safari Books online(R) subscription, use this extension to save videos to your disk to watch later offline.",
-    "version": "0.5",
+    "version": "1.8",
     "permissions": [
         "cookies",
-        "<all_urls>"
+		"downloads",
+        "*://*.safaribooksonline.com/"
     ],
     "content_scripts": [{
-        "matches": ["http://*.safaribooksonline.com/*"],
-        "js": ["jquery.min.js", "content.js"],
+        "matches": ["*://*.safaribooksonline.com/*"],
+        "js": ["lib/jquery.min.js", "core/util.js", "core/shared.js", "core/techbus.js", "core/new.js", "main.js"],
         "run_at": "document_idle"
     }],
     "manifest_version": 2,
@@ -17,5 +18,8 @@
         "48": "icon/48.png",
         "128": "icon/128.png"
     },
-     "web_accessible_resources": ["icon/48.png"]
+    "background": {
+ 	    "scripts": ["core/background.js"]
+ 	},
+    "web_accessible_resources": ["icon/48.png"]
 }
